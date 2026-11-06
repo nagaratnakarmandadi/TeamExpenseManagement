@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Team Expense Manager | Login</title>
+
+<link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+
+<body>
+
+	<main class="login-container">
+
+		<!-- Left Branding Section -->
+		<section class="brand-section">
+
+			<div class="brand">
+				<div class="brand-icon">T</div>
+				<span>TeamExpense</span>
+			</div>
+
+			<div class="brand-content">
+				<h1>Manage team expenses. Simplify teamwork.</h1>
+
+				<p>Track events, manage team members and keep every expense
+					organised in one place.</p>
+			</div>
+
+			<div class="brand-footer">Team Expense Manager</div>
+
+		</section>
+
+		<!-- Right Login Section -->
+		<section class="form-section">
+
+			<div class="login-form-container">
+
+				<h2>Welcome back</h2>
+
+				<p class="subtitle">Sign in to access your expense dashboard.</p>
+
+				<form>
+
+					<div class="form-group">
+						<label for="email">Email address</label> <input type="email"
+							id="email" name="email" placeholder="Enter your email" required>
+					</div>
+
+					<div class="form-group">
+						<label for="password">Password</label> <input type="password"
+							id="password" name="password" placeholder="Enter your password"
+							required>
+					</div>
+
+					<button type="button">Sign In</button>
+
+				</form>
+
+				<p class="note">Secure access to your team's expense workspace.
+				</p>
+
+			</div>
+
+		</section>
+
+	</main>
+
+</body>
+</html>
