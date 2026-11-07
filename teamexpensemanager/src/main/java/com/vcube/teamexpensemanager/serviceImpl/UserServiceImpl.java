@@ -3,9 +3,11 @@ package com.vcube.teamexpensemanager.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.vcube.teamexpensemanager.dto.UserRequest;
+import com.vcube.teamexpensemanager.entity.Role;
 import com.vcube.teamexpensemanager.entity.User;
 import com.vcube.teamexpensemanager.exceptions.BadRequestException;
 import com.vcube.teamexpensemanager.exceptions.ResourceNotFoundException;
@@ -16,7 +18,10 @@ import com.vcube.teamexpensemanager.service.UserService;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Override
 	public User createUser(UserRequest request) {
@@ -25,8 +30,10 @@ public class UserServiceImpl implements UserService {
 		}
 
 		User user = new User();
-		user.setEmail(request.email());
-		user.setName(request.name());
+		user.setEmail(request.email().trim().toLowerCase());
+		user.setName(request.name().trim());
+		user.setPassword(passwordEncoder.encode("password123"));
+		user.setRole(Role.MEMBER);
 
 		return userRepository.save(user);
 	}
